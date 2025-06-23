@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólio de Tiago Miranda</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #181c22;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #23272f;
+            border-radius: 6px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        .header {
+            background: #23272f;
+            color: #e0e0e0;
+            padding: 48px 32px;
+            text-align: center;
+            position: relative;
+            border-bottom: 2px solid #292d36;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            text-shadow: none;
+            letter-spacing: 1px;
+        }
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.8;
+            position: relative;
+            z-index: 2;
+        }
+        .nav {
+            background: #181c22;
+            padding: 16px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #23272f;
+        }
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .nav-btn {
+            background: #23272f;
+            color: #e0e0e0;
+            border: 1px solid #353b48;
+            padding: 10px 22px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: none;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: #353b48;
+            color: #fff;
+            border-color: #4b6cb7;
+        }
+        .content {
+            padding: 32px;
+        }
+        .section {
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+            background: #23272f;
+            padding: 24px;
+            border-radius: 4px;
+            box-shadow: none;
+            border-left: 4px solid #353b48;
+        }
+        .section:nth-child(even) {
+            border-left-color: #4b6cb7;
+        }
+        .section:nth-child(3n) {
+            border-left-color: #222b3a;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .section h2 {
+            color: #e0e0e0;
+            font-size: 2em;
+            margin-bottom: 18px;
+            position: relative;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #353b48;
+        }
+        .section h2::after {
+            display: none;
+        }
+        .section h3 {
+            color: #b0b8c1;
+            font-size: 1.2em;
+            margin: 20px 0 12px 0;
+            position: relative;
+            padding-left: 16px;
+        }
+        .section h3::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #4b6cb7;
+        }
+        .reflection-box {
+            background: #181c22;
+            padding: 18px;
+            border-radius: 4px;
+            margin: 16px 0;
+            border-left: 3px solid #4b6cb7;
+            position: relative;
+            overflow: hidden;
+            color: #b0b8c1;
+        }
+        .reflection-box::before {
+            content: '💭';
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            font-size: 1.2em;
+            opacity: 0.5;
+        }
+        .reflection-box h4 {
+            color: #4b6cb7;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: #23272f;
+            border: 1.5px dashed #353b48;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 16px 0;
+            color: #666;
+            font-size: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+        .podcast-embed {
+            background: #23272f;
+            padding: 22px;
+            border-radius: 4px;
+            margin: 18px 0;
+            text-align: center;
+            color: #e0e0e0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #353b48;
+        }
+        .podcast-embed h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .podcast-btn {
+            background: #181c22;
+            color: #e0e0e0;
+            border: 1.5px solid #4b6cb7;
+            padding: 10px 22px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+        .podcast-btn:hover {
+            background: #4b6cb7;
+            color: #fff;
+        }
+        .conclusion {
+            background: #181c22;
+            color: #e0e0e0;
+            padding: 32px;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 2px solid #23272f;
+        }
+        .conclusion h2, .conclusion p {
+            position: relative;
+            z-index: 2;
+        }
+        .author-info {
+            background: #23272f;
+            padding: 16px;
+            border-radius: 4px;
+            margin-top: 24px;
+            text-align: center;
+            border: 1px solid #353b48;
+            color: #b0b8c1;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 8px;
+                border-radius: 4px;
+            }
+            .header {
+                padding: 28px 10px;
+            }
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .content {
+                padding: 12px;
+            }
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-btn {
+                width: 180px;
+            }
+        }
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Portfólio Acadêmico</h1>
+            <p class="subtitle">Sociedade e Tecnologia | Análise e Desenvolvimento de Sistemas - FATEC | 3º Semestre</p>
+        </header>
+        <nav class="nav">
+            <div class="nav-buttons">
+                <a href="#introducao" class="nav-btn">Introdução</a>
+                <a href="#conceitos" class="nav-btn">Conceitos</a>
+                <a href="#santaella" class="nav-btn">Santaella</a>
+                <a href="#levy" class="nav-btn">Pierre Lévy</a>
+                <a href="#bauman" class="nav-btn">Bauman</a>
+                <a href="#ia" class="nav-btn">Inteligência Artificial</a>
+                <a href="#conclusao" class="nav-btn">Conclusões</a>
+            </div>
+        </nav>
+        <main class="content">
+            <section id="introducao" class="section">
+                <h2>Introdução</h2>
+                <div class="image-placeholder">
+                    <img src="/portifolio_soc-tec/shawn-pIx2wqVhYRU-unsplash.jpg" alt="Representação da interação entre tecnologia e sociedade" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <p>Este portfólio apresenta minhas reflexões e aprendizados ao longo do semestre na disciplina de Sociedade e Tecnologia ministrada pelo professor Thiago Fescina, onde exploramos as complexas relações entre o desenvolvimento tecnológico e as transformações socioculturais contemporâneas. Através do estudo de autores como Lucia Santaella, Pierre Lévy e Zygmunt Bauman, pude desenvolver uma visão crítica e simultaneamente compreensiva sobre os impactos da tecnologia na sociedade atual.</p>
+            </section>
+
+            <section id="conceitos" class="section">
+                <h2>1. Conceitos Fundamentais: Informação e Comunicação</h2>
+                <div class="image-placeholder">
+                    <img src="/portifolio_soc-tec/denny-muller-JyRTi3LoQnc-unsplash.jpg" alt="Visualização do fluxo de informação na era digital" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <p>O ponto de partida de nossa jornada foi compreender a natureza da informação como "um conjunto de dados organizados e contextualizados que possuem significado e valor para quem os recebe". Esta definição, aparentemente simples, revelou-se fundamental para entender as transformações que vivenciamos.</p>
+                <div class="reflection-box">
+                    <h4>Reflexão Pessoal</h4>
+                    <p>Durante o estudo, percebi que a evolução da comunicação humana não é linear nem necessariamente progressiva. Contrariando visões deterministas tecnológicas, observei que desde a imprensa já existia a possibilidade de escolha individual de conteúdo - as pessoas podiam selecionar livros de seu interesse ou participar de grupos de estudos políticos. A principal diferença atual reside na velocidade de produção de conteúdo e na facilidade de acesso, mas não necessariamente na qualidade ou no impacto social.</p>
+                    <p>Esta percepção me levou a questionar se o desenvolvimento tecnológico sempre equivale ao desenvolvimento social, sugerindo que, em alguns casos, pode até ser prejudicial. Um outro ponto interessante observado através de leituras paralelas, pude compreender também que a linguagem de comunicação que usamos não necessariamente é capaz de acompanhar a evolução do estilo de vida.</p>
+                </div>
+            </section>
+
+            <section id="santaella" class="section">
+                <h2>2. Lucia Santaella: Pós-Modernidade e Pós-Humanismo</h2>
+                <div class="image-placeholder">
+                    <img src="/portifolio_soc-tec/santaella.jpg" alt="Lucia Santaella - teórica da comunicação e semiótica" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <p>O trabalho de Lucia Santaella sobre a transição da cultura das mídias para a cibercultura ofereceu insights profundos sobre o "advento do pós-humano". Sua análise de 2003 permanece relevante para compreendermos as transformações contemporâneas.</p>
+                <h3>Principais Aprendizados</h3>
+                <ul>
+                    <li>A evolução tecnológica como fator de transformação cultural</li>
+                    <li>O conceito de pós-humanismo e suas implicações</li>
+                    <li>A relação entre desenvolvimento tecnológico e evolução social</li>
+                </ul>
+                <div class="reflection-box">
+                    <h4>Reflexão Crítica</h4>
+                    <p>Um aspecto que me intrigou foi a observação de Santaella sobre as criações humanas se tornarem cada vez mais semelhantes a nós mesmos, replicando nossos debates e contradições. Isso me levou a refletir sobre o desenvolvimento da Inteligência Artificial: quando os modelos de IA conseguirem evoluir independentemente do input humano e desenvolverem perspectivas próprias, isso poderá representar tanto um salto sem precedentes quanto uma "derrocada sem revanche" para a humanidade.</p>
+                </div>
+                <div class="reflection-box">
+                    <h4>Visão Crítica sobre Dependência Tecnológica</h4>
+                    <p><strong>Ser dependente da tecnologia não equivale a dominá-la.</strong> Quando se afirma que "nós" dominamos o mundo quântico ou conseguimos programar qualquer coisa, há uma generalização perigosa que coloca toda a humanidade no mesmo patamar. Na realidade, o mundo permanece dividido, e o acesso às tecnologias mais avançadas não é democratizado. Esta percepção reforça a importância de cada nação manter competitividade tecnológica para não ser suprimida pelos interesses de outras.</p>
+                </div>
+            </section>
+
+            <section id="levy" class="section">
+                <h2>3. Pierre Lévy: Cibercultura e Inteligência Coletiva</h2>
+                <div class="image-placeholder">
+                    <img src="/portifolio_soc-tec/TJTKLMJCDVDUVEQFTIF55MWXEU.jpeg" alt="Pierre Lévy - filósofo da cibercultura" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <p>O estudo de Pierre Lévy apresentou uma visão otimista sobre a tecnologia como ferramenta de democratização do conhecimento e estabelecimento da inteligência coletiva.</p>
+                <h3>Conceitos Centrais</h3>
+                <ul>
+                    <li><strong>Ciberespaço:</strong> O novo ambiente de comunicação e interação</li>
+                    <li><strong>Cibercultura:</strong> As práticas sociais que emergem no ciberespaço</li>
+                    <li><strong>Inteligência Coletiva:</strong> O potencial colaborativo amplificado pela tecnologia</li>
+                </ul>
+                <div class="podcast-embed">
+                    <h4>🎙️ Podcast: Cibercultura vs Modernidade Líquida</h4>
+                    <p>Discussão com Maria Eduarda sobre os impactos reais da cibercultura na sociedade</p>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/6lT6KWllcAGwYCemm73v8w?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+                <div class="reflection-box">
+                    <h4>Discussão Crítica via Podcast</h4>
+                    <p>Em colaboração com a colega Maria Eduarda, produzi um podcast de 15 minutos explorando a tensão entre os conceitos de cibercultura e modernidade líquida. Nossa discussão central girou em torno da hipótese de que a cibercultura, mais do que revolucionar a qualidade de vida das pessoas, tem potencializado aspectos que a sociedade já possuía, sem necessariamente promover melhorias notáveis e positivas na experiência humana.</p>
+                </div>
+            </section>
+
+            <section id="bauman" class="section">
+                <h2>4. Zygmunt Bauman: Modernidade Líquida</h2>
+                <div class="image-placeholder">
+                    <img src="/portifolio_soc-tec/000_JR7JX-e1484001088720-640x400.jpeg" alt="Zygmunt Bauman - sociólogo da modernidade líquida" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;"> 
+                </div>
+                <p>O conceito de "modernidade líquida" de Bauman ofereceu uma lente crítica para compreendermos as transformações sociais contemporâneas.</p>
+                <h3>Compreensão do Conceito</h3>
+                <p>Bauman argumenta que o mundo contemporâneo é menos sólido e mais volátil comparado ao passado, sendo essa volatilidade amplificada pela evolução tecnológica. As estruturas sociais, antes estáveis e duradouras, tornaram-se fluidas e constantemente mutáveis.</p>
+                <div class="reflection-box">
+                    <h4>Conexões com a Cibercultura</h4>
+                    <p>Durante nossas discussões, explorei como a modernidade líquida se manifesta no ambiente digital, onde as relações, identidades e até mesmo o conhecimento assumem características fluidas e temporárias.</p>
+                </div>
+            </section>
+
+            <section id="ia" class="section">
+                <h2>5. Inteligência Artificial: Reflexões Contemporâneas</h2>
+                <div class="image-placeholder">
+                    <img src="/portifolio_soc-tec/alex-knight-2EJCSULRwC8-unsplash.jpg" alt="Representação visual da inteligência artificial" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <p>O estudo das IAs proporcionou reflexões sobre o futuro da relação humano-máquina e suas implicações sociais.</p>
+                <h3>Questões Emergentes</h3>
+                <ul>
+                    <li>O papel da IA na transformação social</li>
+                    <li>A dependência crescente de sistemas inteligentes</li>
+                    <li>As implicações éticas e sociais do desenvolvimento da IA</li>
+                </ul>
+            </section>
+
+            <section id="sintese" class="section">
+                <h2>6. Síntese: Culturas e Artes do Pós-Moderno</h2>
+                <div class="image-placeholder">
+                    <img src="/portifolio_soc-tec/glenn-carstens-peters-1F4MukO0UNg-unsplash.jpg" alt="Representação das artes pós-modernas" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <p>O retorno aos trabalhos de Santaella sobre culturas e artes pós-modernas encerrou nosso ciclo de estudos, oferecendo uma perspectiva integrada sobre as transformações culturais contemporâneas.</p>
+            </section>
+        </main>
+        <section id="conclusao" class="conclusion">
+            <h2>Considerações Finais</h2>
+            <p>Ao longo deste semestre, desenvolvi uma compreensão mais nuançada sobre a relação entre sociedade e tecnologia. Algumas conclusões principais:</p>
+            <br>
+            <p><strong>1. Crítica ao Determinismo Tecnológico:</strong> A tecnologia não determina automaticamente o progresso social. É necessário avaliar criticamente seus impactos reais.</p>
+            <br>
+            <p><strong>2. Democratização Questionável:</strong> Embora a tecnologia prometa democratização do conhecimento, as divisões sociais e geopolíticas persistem, criando novas formas de exclusão.</p>
+            <br>
+            <p><strong>3. Modernidade Líquida Digital:</strong> O ambiente digital amplifica as características da modernidade líquida, criando estruturas ainda mais voláteis e temporárias.</p>
+            <br>
+            <p><strong>4. Necessidade de Pensamento Crítico:</strong> Diante das transformações aceleradas, é essencial manter uma postura crítica e reflexiva sobre os rumos que a sociedade tecnológica está tomando.</p>
+            <div class="author-info">
+                <p><strong>Perspectivas Futuras:</strong> Os estudos realizados me prepararam para compreender melhor meu papel como futuro profissional de tecnologia, consciente das responsabilidades sociais inerentes ao desenvolvimento e implementação de soluções tecnológicas. A tecnologia não é neutra, e cabe a nós, enquanto profissionais da área, contribuir para um desenvolvimento mais consciente e socialmente responsável.</p>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Smooth scrolling para os links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Destacar seção ativa na navegação
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navButtons = document.querySelectorAll('.nav-btn');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('href') === '#' + current) {
+                    btn.style.background = 'linear-gradient(45deg, #e74c3c, #c0392b)';
+                } else {
+                    btn.style.background = 'linear-gradient(45deg, #3498db, #2980b9)';
+                }
+            });
+        });
+
+        // Efeito de parallax no header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.header');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+</html>
+
